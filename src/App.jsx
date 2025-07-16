@@ -5,11 +5,12 @@ import {useEffect, useState} from 'react'
 import {TournamentService} from "./services/TournamentService.js";
 import {MatchService} from "./services/MatchService.js";
 import {SportService} from "./services/SportService.js";
+import SelectableComponent from "./components/SelectableComponent.jsx";
 
 function App() {
 
     const [sports, setSports] = useState([]);
-    const [selectedSport, setSelectedSport] = useState(null);
+    const [selectedSport, setSelectedSport] = useState([]);
     const [tournaments, setTournaments] = useState([]);
     const [selectedTournaments, setSelectedTournaments] = useState([]);
     const [matches, setMatches] = useState([]);
@@ -24,9 +25,7 @@ function App() {
 
     useEffect(() => {
         SportService.getSports()
-            .then(data => {
-                console.log('Sports:', data);
-            })
+            .then(setSports)
             .catch(err => {
                 console.error('Error fetching sports:', err);
             });
@@ -34,9 +33,7 @@ function App() {
 
     useEffect(() => {
         TournamentService.getTournaments()
-            .then(data => {
-                console.log('Tournaments:', data);
-            })
+            .then(setTournaments)
             .catch(err => {
                 console.error('Error fetching tournaments:', err);
             });
@@ -44,6 +41,10 @@ function App() {
 
   return (
           <Container size="md" mt="xl">
+              <SelectableComponent
+                  tournaments={tournaments}
+                  onChange={setSelectedTournaments}
+              />
               <TableComponent matches={matches}/>
           </Container>
   )
