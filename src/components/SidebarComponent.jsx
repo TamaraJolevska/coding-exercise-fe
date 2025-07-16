@@ -1,5 +1,6 @@
 import { Stack, Button } from '@mantine/core';
 import {useState} from "react";
+import '../App.css'
 import {
     IconBallFootball,
     IconBallBasketball,
@@ -42,7 +43,7 @@ export default function SidebarComponent({ sports, onChange }) {
                         size="sm"
                         leftSection={icon}
                         style={{
-                            backgroundColor: selected ? '#071131' : '#ffffff',
+                            backgroundColor: selected ? 'var(--color-button)' : 'white',
                             color: selected ? 'white' : 'black',
                             border: 'none',
                         }}

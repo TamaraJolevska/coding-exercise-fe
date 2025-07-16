@@ -7,6 +7,7 @@ import {MatchService} from "./services/MatchService.js";
 import {SportService} from "./services/SportService.js";
 import SelectableComponent from "./components/SelectableComponent.jsx";
 import SidebarComponent from "./components/SidebarComponent.jsx";
+import {SearchBoxComponent} from "./components/SearchBoxComponent.jsx";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
     const [filteredTournaments, setFilteredTournaments] = useState([]);
     const [matches, setMatches] = useState([]);
     const [filteredMatches, setFilteredMatches] = useState([]);
+    const [search, setSearch] = useState('');
 
     useEffect(() => {
         MatchService.getMatches()
@@ -78,6 +80,7 @@ function App() {
           </Box>
           <Box style={{ width: '100%' }} p="sm">
               <Container fluid size="md">
+                  <SearchBoxComponent value={search} onChange={setSearch} />
                   <SelectableComponent
                       tournaments={filteredTournaments}
                       onChange={setSelectedTournaments}

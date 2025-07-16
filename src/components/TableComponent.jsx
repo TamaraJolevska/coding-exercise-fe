@@ -1,5 +1,6 @@
 import {Paper, Table} from '@mantine/core';
 import '@mantine/core/styles.layer.css';
+import '../App.css'
 
 export function TableComponent({ matches }) {
     const rows = matches.map((match) => (

@@ -1,5 +1,6 @@
 import { Button, Group } from '@mantine/core';
 import { useState } from 'react';
+import '../App.css'
 
 export default function SelectableComponent({ tournaments, onChange }) {
     const [selectedIds, setSelectedIds] = useState([]);
@@ -26,7 +27,7 @@ export default function SelectableComponent({ tournaments, onChange }) {
                         radius="xl"
                         size="sm"
                         style={{
-                            backgroundColor: selected ? '#071131' : '#f1f3f5',
+                            backgroundColor: selected ? 'var(--color-button)' : 'var(--mantine-color-gray-1)',
                             color: selected ? 'white' : 'black',
                             border: 'none',
                         }}

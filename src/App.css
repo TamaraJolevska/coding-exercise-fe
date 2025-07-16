@@ -1,3 +1,15 @@
+:root {
+    --color-primary: #3b82f6;
+    --color-gray: #dee1e1;
+    --color-background: #f3f4f6;
+    --color-button: #071131;
+    --color-text: #162a6c;
+}
+
+table td {
+    color: var(--color-text);
+}
+
 /*#root {*/
 /*  max-width: 1280px;*/
 /*  margin: 0 auto;*/
