@@ -10,6 +10,7 @@ export default function SelectableComponent({ tournaments, onChange }) {
             : [...selectedIds, id];
 
         setSelectedIds(updated);
+        console.log("Selected tournament IDs:", Array.from(updated));
         onChange(updated);
     };
 

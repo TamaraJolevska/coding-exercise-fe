@@ -16,6 +16,7 @@ function App() {
     const [selectedTournaments, setSelectedTournaments] = useState([]);
     const [filteredTournaments, setFilteredTournaments] = useState([]);
     const [matches, setMatches] = useState([]);
+    const [filteredMatches, setFilteredMatches] = useState([]);
 
     useEffect(() => {
         MatchService.getMatches()
@@ -52,6 +53,21 @@ function App() {
         }
     }, [selectedSports, tournaments]);
 
+    useEffect(() => {
+        if (matches.length === 0) {
+            setFilteredMatches([]);
+            return;
+        }
+
+        const filteredTournamentsIds = new Set(filteredTournaments.map(t => Number(t.id)));
+        const selectedTournamentIds = new Set(selectedTournaments.map(t => Number(t)));
+
+        const tournamentIdsForMatches = selectedTournamentIds.size > 0 ? selectedTournamentIds : filteredTournamentsIds;
+
+        const filtered = matches.filter(m => tournamentIdsForMatches.has(Number(m.tournamentId)));
+        setFilteredMatches(filtered);
+    }, [matches, filteredTournaments, selectedTournaments]);
+
   return (
       <Flex align="flex-start" gap={0}>
           <Box style={{ flex: 0, minWidth: 300 }} p="sm">
@@ -66,7 +82,7 @@ function App() {
                       tournaments={filteredTournaments}
                       onChange={setSelectedTournaments}
                   />
-                  <TableComponent matches={matches}/>
+                  <TableComponent matches={filteredMatches}/>
               </Container>
           </Box>
       </Flex>
