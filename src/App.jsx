@@ -66,9 +66,19 @@ function App() {
 
         const tournamentIdsForMatches = selectedTournamentIds.size > 0 ? selectedTournamentIds : filteredTournamentsIds;
 
-        const filtered = matches.filter(m => tournamentIdsForMatches.has(Number(m.tournamentId)));
+        const filtered = matches
+            .filter(m => tournamentIdsForMatches.has(Number(m.tournamentId)))
+            .filter(m => {
+                if (!search.trim()) {
+                    return true;
+                }
+                const searchName = search.toLowerCase();
+                return (
+                    m.home_team?.toLowerCase().includes(searchName) || m.away_team?.toLowerCase().includes(searchName)
+                )
+            });
         setFilteredMatches(filtered);
-    }, [matches, filteredTournaments, selectedTournaments]);
+    }, [matches, filteredTournaments, selectedTournaments, search]);
 
   return (
       <Flex align="flex-start" gap={0}>
