@@ -5,7 +5,7 @@ export function TableComponent({ matches }) {
     const rows = matches.map((match) => (
         <Table.Tr key={match.id}>
             <Table.Td>{match.start_time}</Table.Td>
-            <Table.Td>{match.status}</Table.Td>
+            <Table.Td>{match.status.charAt(0).toUpperCase() + match.status.slice(1).toLowerCase()}</Table.Td>
             <Table.Td>{match.home_team}</Table.Td>
             <Table.Td>{match.away_team}</Table.Td>
             <Table.Td>{match.home_score || '-'}</Table.Td>
