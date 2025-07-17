@@ -1,12 +1,37 @@
-# React + Vite
+# Coding exercise for Frontend using React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application created using Vite/Node.js and Mantine.dev libraries. The application features:
+- Displaying sports, tournaments and matches data from external RestAPI endpoints
+- The sports are displayed in the sidebar
+- The matches are displayed in a table
+- The tournaments are displayed as selectable items above the table of matches
+- Unit tests are included for the services
 
-Currently, two official plugins are available:
+The application provides filtering options:
+- Filter the matches by home and away team using the search bar
+- Filter the tournaments / matches using the sidebar sport selection
+- Filter the matches using the tournament selection
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Multi-selection filtering is possible.
 
-## Expanding the ESLint configuration
+## Run the application
+Prerequisites - Node.js (https://nodejs.org/en/download)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Clone the project: 
+```
+git clone https://github.com/TamaraJolevska/coding-exercise-fe.git
+```
+Install the dependency:
+```
+npm install
+```
+Run the application:
+```
+npm run dev
+```
+
+## Open the application in the browser
+http://localhost:3000/
+
+## Test the unit tests in the test folder
+There are provided three tests for each service: MatchService.test.js, SportService.test.js and TournamentService.test.js
